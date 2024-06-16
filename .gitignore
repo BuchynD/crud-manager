@@ -2,6 +2,7 @@
 
 # dependencies
 /react-crud-manager/node_modules
+/angular-crud-manager/node_modules
 /node_modules
 /.pnp
 .pnp.js
@@ -22,3 +23,44 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+/angular-crud-manager/idea/
+/angular-crud-manager/project
+/angular-crud-manager/classpath
+/angular-crud-manager/c9/
+/angular-crud-manager/*launch
+/angular-crud-manager/settings/
+/angular-crud-manager/*sublime-workspace
+
+# Visual Studio Code
+/angular-crud-manager/.vscode/*
+/angular-crud-manager/!.vscode/settings.json
+/angular-crud-manager/!.vscode/tasks.json
+/angular-crud-manager/!.vscode/launch.json
+/angular-crud-manager/!.vscode/extensions.json
+/angular-crud-manager/history/*
+
+# Miscellaneous
+/angular-crud-manager/angular/cache
+/angular-crud-manager/sass-cache/
+/angular-crud-manager/connect.lock
+/angular-crud-manager/coverage
+/angular-crud-manager/libpeerconnection.log
+/angular-crud-manager/testem.log
+/angular-crud-manager/typings
+
+# System files
+.DS_Store
+Thumbs.db
