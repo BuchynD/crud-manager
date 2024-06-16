@@ -1,0 +1,102 @@
+[
+  {
+    "id": "c744a2f4-7a88-46b8-9bbc-994422bb4f89",
+    "project_id": "null",
+    "drawing_name": "Crossing"
+  },
+  {
+    "id": "a56f9e29-7eef-49a6-8d15-81fad519265f",
+    "project_id": "null",
+    "drawing_name": "Terrace"
+  },
+  {
+    "id": "65f317f6-a27f-45fe-924f-2f4040cb220d",
+    "project_id": "null",
+    "drawing_name": "Street"
+  },
+  {
+    "id": "942850bb-3d8a-4a8f-b6f0-712dda49fa68",
+    "project_id": "null",
+    "drawing_name": "Hill"
+  },
+  {
+    "id": "83757e13-c394-4248-a418-0ef5d96bd308",
+    "project_id": "null",
+    "drawing_name": "Lane"
+  },
+  {
+    "id": "265e35ff-e4ba-430f-a90d-a15ef5bfcab4",
+    "project_id": "null",
+    "drawing_name": "Junction"
+  },
+  {
+    "id": "557d8f36-3490-4ef6-bd46-c5a9818d9a7d",
+    "project_id": "null",
+    "drawing_name": "Street"
+  },
+  {
+    "id": "5e44e174-537b-4650-88dd-9e5cdff63166",
+    "project_id": "null",
+    "drawing_name": "Plaza"
+  },
+  {
+    "id": "bfc6d4ec-979b-4b29-bc6e-227d9964a991",
+    "project_id": "null",
+    "drawing_name": "Lane"
+  },
+  {
+    "id": "e58648ef-bc14-4ca7-bae2-dd55ac110d8f",
+    "project_id": "null",
+    "drawing_name": "Parkway"
+  },
+  {
+    "id": "56c003b6-d596-4f88-90ab-716e4ae78ee6",
+    "project_id": "null",
+    "drawing_name": "Trail"
+  },
+  {
+    "id": "dfc6512d-0faf-4e2a-80e9-a1aa9142f439",
+    "project_id": "null",
+    "drawing_name": "Junction"
+  },
+  {
+    "id": "ab926c59-7a86-4df8-a2ad-3ee1277f60f2",
+    "project_id": "null",
+    "drawing_name": "Street"
+  },
+  {
+    "id": "77f85c3d-5742-4e7b-aa3f-c75919d9175c",
+    "project_id": "null",
+    "drawing_name": "Junction"
+  },
+  {
+    "id": "a9ab99ed-2e21-4267-80a5-e0e5f5d93247",
+    "project_id": "null",
+    "drawing_name": "Trail"
+  },
+  {
+    "id": "3f774619-4cd2-44e6-8e7f-d34bad2ac380",
+    "project_id": "null",
+    "drawing_name": "Way"
+  },
+  {
+    "id": "fd16e17f-e114-4dac-a8f6-5c47027d4e36",
+    "project_id": "null",
+    "drawing_name": "Center"
+  },
+  {
+    "id": "b4028e98-e57e-4c5a-bd6a-edd124f8b87d",
+    "project_id": "null",
+    "drawing_name": "Circle"
+  },
+  {
+    "id": "1ba30f29-cc3e-43b2-8fda-d0a2c9c94611",
+    "project_id": "null",
+    "drawing_name": "Way"
+  },
+  {
+    "id": "a35686ab-8452-4882-b2a2-0434684bb599",
+    "project_id": "null",
+    "drawing_name": "Circle"
+  }
+]

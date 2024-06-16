@@ -1,0 +1,102 @@
+[
+  {
+    "id": "756ea30b-962d-415f-9345-09afaa56d0c5",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Avenue"
+  },
+  {
+    "id": "f4ab4212-e373-44ef-955c-97f9d3ba25f8",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Avenue"
+  },
+  {
+    "id": "99bc361d-4df8-4138-baf3-92505a2b35dc",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Court"
+  },
+  {
+    "id": "72b34030-a6fb-4226-a758-19b611cb23d0",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Drive"
+  },
+  {
+    "id": "98e6e413-6083-4185-84c8-052fb2449b30",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Place"
+  },
+  {
+    "id": "2fdcf37e-cd82-421b-bab7-08665e200f92",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Street"
+  },
+  {
+    "id": "7e528828-ec5a-4198-b8be-5c46b587b450",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Crossing"
+  },
+  {
+    "id": "a07df1f9-b633-4e65-84d8-5246970802ab",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Center"
+  },
+  {
+    "id": "129e4c7a-3f61-4745-a1cf-678d2d49acff",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Road"
+  },
+  {
+    "id": "6b76fa37-7f91-489c-ab57-d6225a249fa5",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Place"
+  },
+  {
+    "id": "727f3e94-e8f5-4ac2-92ea-63718798f415",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Point"
+  },
+  {
+    "id": "fb02ae6d-49ad-4a3d-a82a-25b9af34eb55",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Hill"
+  },
+  {
+    "id": "420153e1-d604-41fc-b961-5c6605a9c07b",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Terrace"
+  },
+  {
+    "id": "75960ad5-e3a1-41d5-b006-9759456c7969",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Terrace"
+  },
+  {
+    "id": "77b6bd13-a4d9-4fdd-a181-70cfb5d77f85",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Pass"
+  },
+  {
+    "id": "96b382ac-4c01-4b4d-9aca-ffdc25e680b3",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Center"
+  },
+  {
+    "id": "d963fa93-3e2f-4a74-8e85-dde773bbbe5d",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Parkway"
+  },
+  {
+    "id": "c4cfa572-bd2f-4472-bf78-9e86aa1fb45a",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Parkway"
+  },
+  {
+    "id": "e5a7f083-06fb-4195-a129-e91f98a75852",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Street"
+  },
+  {
+    "id": "52bbf67f-eea2-4392-971e-9c4463c298ee",
+    "project_id": "91fe2af0-8ae1-459e-afa7-5fe516d765d9",
+    "drawing_name": "Street"
+  }
+]
