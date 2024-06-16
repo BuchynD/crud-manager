@@ -53,7 +53,8 @@ yarn-error.log
 /angular-crud-manager/history/*
 
 # Miscellaneous
-/angular-crud-manager/angular/cache
+/angular-crud-manager/.angular/*
+/angular-crud-manager/.angular/cache
 /angular-crud-manager/sass-cache/
 /angular-crud-manager/connect.lock
 /angular-crud-manager/coverage
