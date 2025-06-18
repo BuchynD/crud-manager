@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   AppBar,
+  Avatar,
   Box,
   Button,
   Checkbox,
@@ -13,7 +14,10 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AppsIcon from "@mui/icons-material/Apps";
+import SettingsIcon from "@mui/icons-material/Settings";
 import "../App.css";
 
 const HomePage: React.FC = () => {
@@ -122,10 +126,31 @@ const HomePage: React.FC = () => {
   return (
     <>
       <header>
-        <button id="squares"></button>
+        <button id="squares">
+          <AppsIcon />
+        </button>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            height: "100%",
+            gap: "20px",
+          }}>
+          <SettingsIcon sx={{ color: "#397bf7" }} />
+          <Avatar sx={{ bgcolor: "#397bf7" }}>M</Avatar>
+        </div>
       </header>
       <main>
-        <Button startIcon={<AddIcon />}>New project</Button>
+        <Button
+          sx={{
+            bgcolor: "#397bf719;",
+            "&:hover": {
+              bgcolor: "#397bf729;",
+            },
+          }}
+          startIcon={<AddIcon />}>
+          New project
+        </Button>
         <div style={{ flex: "1" }}>
           <Box sx={{ display: "flex", alignItems: "flex-end", width: "100%" }}>
             <SearchIcon sx={{ color: "#397bf7", mr: 1, my: 0.5 }} />
@@ -138,26 +163,37 @@ const HomePage: React.FC = () => {
           </Box>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Checkbox />
-            <span>{projects.length} items</span>
+            <IconButton>
+              <DeleteIcon sx={{color:"red"}} />
+            </IconButton>
+            <span style={{ marginLeft: "auto" }}>{projects.length} items</span>
           </div>
           <div
             style={{
               display: "grid",
               gap: "20px",
-              gridTemplateColumns: "auto auto auto",
+              gridTemplateColumns: "repeat(3, 1fr)",
             }}>
             {projects.map((project) => (
               <Card>
-                <CardContent>
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    gap: "200px",
+                  }}>
                   <div
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
                     }}>
                     <Checkbox />
-                    <IconButton><MoreVertIcon/></IconButton>
+                    <IconButton>
+                      <MoreVertIcon />
+                    </IconButton>
                   </div>
-                  {project.project_name}
+                  <span>{project.project_name}</span>
                 </CardContent>
               </Card>
             ))}
