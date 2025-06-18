@@ -166,7 +166,7 @@ const HomePage: React.FC = () => {
             <IconButton>
               <DeleteIcon sx={{color:"red"}} />
             </IconButton>
-            <span style={{ marginLeft: "auto" }}>{projects.length} items</span>
+            <span style={{ marginLeft: "auto", color:"#397bf7" }}>{projects.length} items</span>
           </div>
           <div
             style={{
@@ -190,10 +190,10 @@ const HomePage: React.FC = () => {
                     }}>
                     <Checkbox />
                     <IconButton>
-                      <MoreVertIcon />
+                      <MoreVertIcon sx={{ color:"#397bf7" }} />
                     </IconButton>
                   </div>
-                  <span>{project.project_name}</span>
+                  <span style={{ color:"#397bf7" }}>{project.project_name}</span>
                 </CardContent>
               </Card>
             ))}
