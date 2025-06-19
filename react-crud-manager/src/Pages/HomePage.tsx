@@ -131,6 +131,7 @@ const HomePage: React.FC = () => {
     },
   ]);
   const [formVisibility, setFormVisibility] = useState(false);
+  const [selected, setSelected] = useState<string[]>([]);
   return (
     <>
       <header>
@@ -172,7 +173,14 @@ const HomePage: React.FC = () => {
           </Box>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Checkbox />
-            <IconButton>
+            <IconButton
+              onClick={() =>
+                setProjects((prev) =>
+                  prev.filter(
+                    (p) => !selected.some((selectedId) => selectedId === p.id)
+                  )
+                )
+              }>
               <DeleteIcon sx={{ color: "red" }} />
             </IconButton>
             <span style={{ marginLeft: "auto", color: "#397bf7" }}>
@@ -199,7 +207,16 @@ const HomePage: React.FC = () => {
                       display: "flex",
                       justifyContent: "space-between",
                     }}>
-                    <Checkbox />
+                    <Checkbox
+                      checked={selected.some((id) => project.id === id)}
+                      onChange={(event) =>
+                        setSelected((prev) =>
+                          event.target.checked
+                            ? [...prev, project.id]
+                            : prev.filter((p) => p !== project.id)
+                        )
+                      }
+                    />
                     <IconButton>
                       <MoreVertIcon sx={{ color: "#397bf7" }} />
                     </IconButton>
@@ -267,7 +284,7 @@ const HomePage: React.FC = () => {
             </FormControl>
           </DialogContent>
           <DialogActions>
-            <Button onClick={()=>setFormVisibility(false)}>Cancel</Button>
+            <Button onClick={() => setFormVisibility(false)}>Cancel</Button>
             <Button type="submit">Create</Button>
           </DialogActions>
         </Dialog>
