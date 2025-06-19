@@ -5,13 +5,20 @@ import {
   Box,
   Button,
   Checkbox,
+  DialogActions,
+  DialogContent,
+  FormControl,
   Icon,
   IconButton,
+  MenuItem,
+  Select,
   Typography,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -123,6 +130,7 @@ const HomePage: React.FC = () => {
       measurement: "metric",
     },
   ]);
+  const [formVisibility, setFormVisibility] = useState(false);
   return (
     <>
       <header>
@@ -148,7 +156,8 @@ const HomePage: React.FC = () => {
               bgcolor: "#397bf729;",
             },
           }}
-          startIcon={<AddIcon />}>
+          startIcon={<AddIcon />}
+          onClick={() => setFormVisibility(true)}>
           New project
         </Button>
         <div style={{ flex: "1" }}>
@@ -164,9 +173,11 @@ const HomePage: React.FC = () => {
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Checkbox />
             <IconButton>
-              <DeleteIcon sx={{color:"red"}} />
+              <DeleteIcon sx={{ color: "red" }} />
             </IconButton>
-            <span style={{ marginLeft: "auto", color:"#397bf7" }}>{projects.length} items</span>
+            <span style={{ marginLeft: "auto", color: "#397bf7" }}>
+              {projects.length} items
+            </span>
           </div>
           <div
             style={{
@@ -190,16 +201,77 @@ const HomePage: React.FC = () => {
                     }}>
                     <Checkbox />
                     <IconButton>
-                      <MoreVertIcon sx={{ color:"#397bf7" }} />
+                      <MoreVertIcon sx={{ color: "#397bf7" }} />
                     </IconButton>
                   </div>
-                  <span style={{ color:"#397bf7" }}>{project.project_name}</span>
+                  <span style={{ color: "#397bf7" }}>
+                    {project.project_name}
+                  </span>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
       </main>
+      {formVisibility && (
+        <Dialog
+          open={formVisibility}
+          onClose={() => setFormVisibility(false)}
+          slotProps={{
+            paper: {
+              component: "form",
+              onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
+                event.preventDefault();
+                const formData = new FormData(event.currentTarget);
+                const formJson = Object.fromEntries(
+                  (formData as any).entries()
+                );
+                let newId;
+                try {
+                  newId = crypto.randomUUID();
+                } catch (e: unknown) {
+                  newId = String(Date.now());
+                }
+                const newObject = {
+                  id: newId,
+                  project_name: formJson.name,
+                  measurement: formJson.measurement,
+                };
+                setProjects([...projects, newObject]);
+                setFormVisibility(false);
+              },
+            },
+          }}>
+          <DialogTitle>New project</DialogTitle>
+          <DialogContent>
+            <TextField
+              autoFocus
+              required
+              margin="dense"
+              id="name"
+              name="name"
+              label="Name"
+              fullWidth
+              variant="standard"
+              placeholder="New project"
+            />
+            <FormControl fullWidth>
+              <Select
+                id="measurement"
+                name="measurement"
+                value="metric"
+                label="Measurement system">
+                <MenuItem value="imperial">Imperial</MenuItem>
+                <MenuItem value="metric">Metric</MenuItem>
+              </Select>
+            </FormControl>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={()=>setFormVisibility(false)}>Cancel</Button>
+            <Button type="submit">Create</Button>
+          </DialogActions>
+        </Dialog>
+      )}
     </>
   );
 };
