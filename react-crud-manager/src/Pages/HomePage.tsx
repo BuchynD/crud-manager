@@ -10,6 +10,7 @@ import {
   FormControl,
   Icon,
   IconButton,
+  Menu,
   MenuItem,
   Select,
   Typography,
@@ -26,6 +27,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AppsIcon from "@mui/icons-material/Apps";
 import SettingsIcon from "@mui/icons-material/Settings";
 import "../App.css";
+
+type HTMLInputOrSelectElement = HTMLInputElement | HTMLSelectElement;
 
 const HomePage: React.FC = () => {
   const [projects, setProjects] = useState([
@@ -130,8 +133,21 @@ const HomePage: React.FC = () => {
       measurement: "metric",
     },
   ]);
+  const [openMenu, setOpenMenu] = useState("");
   const [formVisibility, setFormVisibility] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
+  const [editedProjectId, setEditedProjectId] = useState("");
+  const [formData, setFormData] = useState({ name: "", measurement: "" });
+  function handleFormDataChange<
+    T extends { target: { name: string; value: string } }
+  >(event: T) {
+    const target = event.target! as HTMLInputOrSelectElement;
+    const { name, value } = target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
   return (
     <>
       <header>
@@ -158,7 +174,11 @@ const HomePage: React.FC = () => {
             },
           }}
           startIcon={<AddIcon />}
-          onClick={() => setFormVisibility(true)}>
+          onClick={() => {
+            setEditedProjectId("");
+            setFormData({ name: "", measurement: "metric" });
+            setFormVisibility(true);
+          }}>
           New project
         </Button>
         <div style={{ flex: "1" }}>
@@ -217,9 +237,27 @@ const HomePage: React.FC = () => {
                         )
                       }
                     />
-                    <IconButton>
+                    <IconButton
+                      id={`menu-${project.id}`}
+                      onClick={() => setOpenMenu(project.id)}>
                       <MoreVertIcon sx={{ color: "#397bf7" }} />
                     </IconButton>
+                    <Menu
+                      anchorEl={document.querySelector(`menu-${project.id}`)}
+                      open={openMenu === project.id}
+                      onClose={() => setOpenMenu("")}>
+                      <MenuItem
+                        onClick={() => {
+                          setEditedProjectId(project.id);
+                          setFormData({
+                            name: project.project_name,
+                            measurement: project.measurement,
+                          });
+                          setFormVisibility(true);
+                        }}>
+                        Edit
+                      </MenuItem>
+                    </Menu>
                   </div>
                   <span style={{ color: "#397bf7" }}>
                     {project.project_name}
@@ -230,65 +268,69 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </main>
-      {formVisibility && (
-        <Dialog
-          open={formVisibility}
-          onClose={() => setFormVisibility(false)}
-          slotProps={{
-            paper: {
-              component: "form",
-              onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
-                event.preventDefault();
-                const formData = new FormData(event.currentTarget);
-                const formJson = Object.fromEntries(
-                  (formData as any).entries()
-                );
-                let newId;
-                try {
-                  newId = crypto.randomUUID();
-                } catch (e: unknown) {
-                  newId = String(Date.now());
-                }
-                const newObject = {
-                  id: newId,
-                  project_name: formJson.name,
-                  measurement: formJson.measurement,
-                };
-                setProjects([...projects, newObject]);
-                setFormVisibility(false);
-              },
+      <Dialog
+        open={formVisibility}
+        onClose={() => setFormVisibility(false)}
+        slotProps={{
+          paper: {
+            component: "form",
+            onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
+              event.preventDefault();
+              const formData = new FormData(event.currentTarget);
+              const formJson = Object.fromEntries((formData as any).entries());
+              let id;
+              try {
+                id = editedProjectId || crypto.randomUUID();
+              } catch (e: unknown) {
+                id = String(Date.now());
+              }
+              const newObject = {
+                id: id,
+                project_name: formJson.name,
+                measurement: formJson.measurement,
+              };
+              setProjects((prev) =>
+                editedProjectId
+                  ? prev.map((p) => (p.id === editedProjectId ? newObject : p))
+                  : [...prev, newObject]
+              );
+              setFormVisibility(false);
+              setEditedProjectId("");
             },
-          }}>
-          <DialogTitle>New project</DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              required
-              margin="dense"
-              id="name"
-              name="name"
-              label="Name"
-              fullWidth
-              variant="standard"
-              placeholder="New project"
-            />
-            <FormControl fullWidth>
-              <Select
-                id="measurement"
-                name="measurement"
-                value="metric"
-                label="Measurement system">
-                <MenuItem value="imperial">Imperial</MenuItem>
-                <MenuItem value="metric">Metric</MenuItem>
-              </Select>
-            </FormControl>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => setFormVisibility(false)}>Cancel</Button>
-            <Button type="submit">Create</Button>
-          </DialogActions>
-        </Dialog>
-      )}
+          },
+        }}>
+        <DialogTitle>New project</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            required
+            margin="dense"
+            id="name"
+            name="name"
+            label="Name"
+            fullWidth
+            variant="standard"
+            placeholder="New project"
+            value={formData.name}
+            onChange={(e) => handleFormDataChange(e)}
+          />
+          <FormControl fullWidth>
+            <Select
+              id="measurement"
+              name="measurement"
+              value={formData.measurement}
+              onChange={(e) => handleFormDataChange(e)}
+              label="Measurement system">
+              <MenuItem value="imperial">Imperial</MenuItem>
+              <MenuItem value="metric">Metric</MenuItem>
+            </Select>
+          </FormControl>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setFormVisibility(false)}>Cancel</Button>
+          <Button type="submit">Create</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };
